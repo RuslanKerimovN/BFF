@@ -1,0 +1,1 @@
+export { paramsMiddleware } from './paramsMiddleware';
