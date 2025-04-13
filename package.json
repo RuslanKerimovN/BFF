@@ -4,9 +4,7 @@
 	"description": "backend for frontend",
 	"main": "index.js",
 	"type": "module",
-	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
-	},
+	"scripts": {},
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/RuslanKerimovN/BFF.git"
@@ -17,21 +15,13 @@
 		"url": "https://github.com/RuslanKerimovN/BFF/issues"
 	},
 	"homepage": "https://github.com/RuslanKerimovN/BFF#readme",
-	"dependencies": {
-		"dotenv": "^16.4.7",
-		"express": "^5.1.0"
-	},
 	"devDependencies": {
-		"@types/express": "^5.0.1",
-		"@types/node": "^22.14.0",
 		"@typescript-eslint/eslint-plugin": "^8.29.0",
 		"@typescript-eslint/parser": "^8.29.0",
 		"eslint": "^9.24.0",
 		"eslint-config-prettier": "^10.1.1",
 		"eslint-plugin-prettier": "^5.2.6",
-		"nodemon": "^3.1.9",
 		"prettier": "^3.5.3",
-		"ts-node": "^10.9.2",
 		"typescript": "^5.8.3"
 	}
 }
