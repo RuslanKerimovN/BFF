@@ -14,8 +14,6 @@
 		"useUnknownInCatchVariables": true,
 		"skipLibCheck": true,
 		"resolveJsonModule": true,
-		"noUnusedLocals": true,
-		"noUnusedParameters": true,
 		"noFallthroughCasesInSwitch": true,
 		"isolatedModules": true,
 		"lib": ["ES2020", "DOM", "DOM.Iterable"],
