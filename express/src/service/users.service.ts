@@ -1,17 +1,55 @@
-export class Users {
-	getUsers() {
-		return [];
+import { type User, PrismaClient } from '../generated/prisma/client';
+import { type UpdateUser, type CreateUser } from '../types/types';
+
+export class UsersService {
+	private prisma;
+
+	constructor() {
+		this.prisma = new PrismaClient();
 	}
 
-	getUser(id: string) {
-		return { id };
+	async getUsers(): Promise<User[]> {
+		return await this.prisma.user.findMany();
 	}
 
-	updateUser(id: string) {
-		return 'success';
+	async getUser(id: string): Promise<User | null> {
+		return await this.prisma.user.findUnique({
+			where: { id: Number(id) },
+		});
 	}
 
-	deleteUser(id: string) {
-		return 'success';
+	async createUser(user: CreateUser): Promise<string> {
+		const createdUser = await this.prisma.user
+			.create({
+				data: user,
+			})
+			.catch(() => null);
+
+		return createdUser ? 'success' : 'error';
+	}
+
+	async updateUser(id: string, user: UpdateUser): Promise<User | null> {
+		const updatedUser = await this.prisma.user
+			.update({
+				where: { id: Number(id) },
+				data: {
+					name: user.name,
+					lastName: user.lastName,
+					country: user.country,
+				},
+			})
+			.catch(() => null);
+
+		return updatedUser;
+	}
+
+	async deleteUser(id: string): Promise<string> {
+		const deletedUser = await this.prisma.user
+			.delete({
+				where: { id: Number(id) },
+			})
+			.catch(() => null);
+
+		return deletedUser ? 'success' : 'error';
 	}
 }

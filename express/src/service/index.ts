@@ -1,2 +1,2 @@
-export { Posts } from './posts.service';
-export { Users } from './users.service';
+export { PostsService } from './posts.service';
+export { UsersService } from './users.service';

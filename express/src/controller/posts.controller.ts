@@ -1,9 +1,9 @@
 import { Router } from 'express';
-import { Posts } from '../service';
+import { PostsService } from '../service';
 import { paramsMiddleware } from '../middleware';
 
 const router = Router();
-const service = new Posts();
+const service = new PostsService();
 
 router.get('/', (req, res) => {
 	const posts = service.getPosts();
