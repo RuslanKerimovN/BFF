@@ -15,6 +15,7 @@ export class UsersService {
 	async getUser(id: string): Promise<User | null> {
 		return await this.prisma.user.findUnique({
 			where: { id: Number(id) },
+			include: { posts: true },
 		});
 	}
 
