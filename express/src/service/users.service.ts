@@ -1,5 +1,5 @@
 import { type User, PrismaClient } from '../generated/prisma/client';
-import { type UpdateUser, type CreateUser } from '../types/types';
+import { type UpdateUser, type CreateUser } from '../types';
 
 export class UsersService {
 	private prisma;
@@ -29,18 +29,14 @@ export class UsersService {
 	}
 
 	async updateUser(id: string, user: UpdateUser): Promise<User | null> {
-		const updatedUser = await this.prisma.user
+		const { name, lastName, country } = user ?? {};
+
+		return await this.prisma.user
 			.update({
 				where: { id: Number(id) },
-				data: {
-					name: user.name,
-					lastName: user.lastName,
-					country: user.country,
-				},
+				data: { name, lastName, country },
 			})
 			.catch(() => null);
-
-		return updatedUser;
 	}
 
 	async deleteUser(id: string): Promise<string> {
