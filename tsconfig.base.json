@@ -1,7 +1,5 @@
 {
 	"compilerOptions": {
-		"target": "es2016",
-		"moduleResolution": "NodeNext",
 		"noImplicitReturns": true,
 		"sourceMap": true,
 		"esModuleInterop": true,

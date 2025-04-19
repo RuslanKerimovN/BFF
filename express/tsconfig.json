@@ -1,7 +1,9 @@
 {
 	"extends": "../tsconfig.base.json",
 	"compilerOptions": {
+		"target": "es2016",
 		"module": "NodeNext",
+		"moduleResolution": "NodeNext",
 		"outDir": "./dist",
 		"rootDir": "./src",
 		"noEmit": true
