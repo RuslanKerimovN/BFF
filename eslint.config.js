@@ -2,10 +2,12 @@ import tsParser from '@typescript-eslint/parser';
 import tsPlugin from '@typescript-eslint/eslint-plugin';
 import prettier from 'eslint-plugin-prettier';
 import prettierConfig from 'eslint-config-prettier';
+import reactHooks from 'eslint-plugin-react-hooks';
+import reactRefresh from 'eslint-plugin-react-refresh';
 
 export default [
 	{
-		files: ['**/*.ts'],
+		files: ['**/*.{ts,tsx}'],
 		languageOptions: {
 			parser: tsParser,
 			sourceType: 'module',
@@ -13,9 +15,12 @@ export default [
 		plugins: {
 			'@typescript-eslint': tsPlugin,
 			prettier,
+			'react-hooks': reactHooks,
+			'react-refresh': reactRefresh,
 		},
 		rules: {
 			...tsPlugin.configs.recommended.rules,
+			...reactHooks.configs.recommended.rules,
 			'prettier/prettier': 'error',
 			'no-new-object': 'warn',
 			'prefer-const': 'warn',
