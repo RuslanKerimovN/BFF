@@ -9,7 +9,9 @@ export class UsersService {
   }
 
   async getUsers(): Promise<User[]> {
-    return await this.prisma.user.findMany();
+    return await this.prisma.user.findMany({
+      include: { posts: true },
+    });
   }
 
   async getUser(id: string): Promise<User | null> {

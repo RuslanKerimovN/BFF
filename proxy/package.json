@@ -1,0 +1,26 @@
+{
+  "name": "proxy",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "ts-node ./src/graphqlServer.ts",
+    "dev": "nodemon --exec ts-node ./src/graphqlServer.ts"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@types/express": "^4.17.13",
+    "@types/graphql": "^14.2.3",
+    "@types/node": "^22.15.16",
+    "nodemon": "^3.1.10",
+    "ts-node": "^10.9.2"
+  },
+  "dependencies": {
+    "apollo-server-express": "^3.12.0",
+    "axios": "^1.9.0",
+    "dotenv": "^16.5.0",
+    "express": "^4.17.1",
+    "graphql": "^16.11.0"
+  }
+}
