@@ -1,10 +1,12 @@
-import { Fragment, useState } from 'react';
+import { type FC, Fragment, useState } from 'react';
 import { useReactTable, getCoreRowModel, flexRender } from '@tanstack/react-table';
-import { DATA, getColumns } from './constants';
+import { DATA } from '../constants';
 
-import styles from './index.module.css';
+import styles from './App.module.css';
+import { getColumns } from './App.utils';
+import { PostCard } from '../components';
 
-export const App = () => {
+export const App: FC = () => {
   const [expandedRows, setExpandedRows] = useState<Record<number, boolean>>({});
 
   const toggleRow = (rowId: number): void => {
@@ -48,8 +50,12 @@ export const App = () => {
               </tr>
               {expandedRows[row.original.id] && (
                 <tr>
-                  <td className={styles.data} colSpan={columns.length}>
-                    12345
+                  <td colSpan={columns.length}>
+                    <div className={styles.posts}>
+                      {row.original.posts.map((post) => (
+                        <PostCard key={post.id} post={post} />
+                      ))}
+                    </div>
                   </td>
                 </tr>
               )}

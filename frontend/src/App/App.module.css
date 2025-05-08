@@ -1,29 +1,46 @@
+:root {
+  --lg: 24px;
+  --md: 16px;
+  --ms: 8px;
+
+  --gray: #f2f2f2;
+}
+
 .container {
   display: flex;
   justify-content: center;
+  font-size: 1rem;
+  padding-bottom: var(--lg);
 }
 
 .table {
   border-collapse: collapse;
   width: 70%;
-  margin-top: 24px;
+  margin-top: var(--lg);
 }
 
 .header {
   border: 1px solid #ddd;
-  padding: 8px;
+  padding: var(--ms);
   text-align: left;
   border-left: none;
   border-right: none;
-  background-color: #f2f2f2;
+  background-color: var(--gray);
 }
 
 .data {
   border: 1px solid #ddd;
-  padding: 8px;
+  padding: var(--ms);
   text-align: left;
-  border-left: none;
-  border-right: none;
+}
+
+.posts {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--lg) 0 var(--lg) 0;
+  gap: var(--lg);
 }
 
 .button {
