@@ -1,13 +1,19 @@
 import { type FC, Fragment, useState } from 'react';
 import { useReactTable, getCoreRowModel, flexRender } from '@tanstack/react-table';
+import { useQuery } from '@apollo/client';
 import { DATA } from '../constants';
 
 import styles from './App.module.css';
 import { getColumns } from './App.utils';
 import { PostCard } from '../components';
+import { GET_USERS, GET_USERS_MOBILE } from '../services';
+import { typeOfDevice } from '../utils';
 
 export const App: FC = () => {
   const [expandedRows, setExpandedRows] = useState<Record<number, boolean>>({});
+  const { data, loading, error } = useQuery(
+    typeOfDevice === 'Desktop' ? GET_USERS : GET_USERS_MOBILE
+  );
 
   const toggleRow = (rowId: number): void => {
     setExpandedRows((prev) => ({
@@ -52,9 +58,7 @@ export const App: FC = () => {
                 <tr>
                   <td colSpan={columns.length}>
                     <div className={styles.posts}>
-                      {row.original.posts.map((post) => (
-                        <PostCard key={post.id} post={post} />
-                      ))}
+                      {row.original.posts?.map((post) => <PostCard key={post.id} post={post} />)}
                     </div>
                   </td>
                 </tr>

@@ -6,20 +6,23 @@ export const getColumns = (callback: (id: number) => void, id: Record<number, bo
   {
     header: 'Name',
     accessorKey: 'name',
-    cell: ({ row }: { row: { original: User } }): ReactNode => (
-      <>
-        {row.original.posts.length > 0 && (
-          <>
-            <button onClick={() => callback(row.original.id)} className={styles.button}>
-              {id ? '▼' : '▶'}
-            </button>
-          </>
-        )}
-        <span style={{ marginLeft: row.original.posts.length === 0 ? '10px' : 0 }}>
-          {row.original.name}
-        </span>
-      </>
-    ),
+    cell: ({ row }: { row: { original: User } }): ReactNode => {
+      const { posts, name, id: rowId } = row.original ?? {};
+      const hasLength = posts && posts.length > 0;
+
+      return (
+        <>
+          {hasLength && (
+            <>
+              <button onClick={() => callback(rowId)} className={styles.button}>
+                {id ? '▼' : '▶'}
+              </button>
+            </>
+          )}
+          <span style={{ marginLeft: hasLength ? 0 : '10px' }}>{name}</span>
+        </>
+      );
+    },
   },
   {
     header: 'Last Name',

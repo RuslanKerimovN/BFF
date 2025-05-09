@@ -1,0 +1,1 @@
+export { typeOfDevice } from './devices';
