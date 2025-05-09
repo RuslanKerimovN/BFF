@@ -1,1 +1,0 @@
-export { DATA } from './constants';

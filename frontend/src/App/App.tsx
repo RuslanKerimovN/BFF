@@ -1,17 +1,17 @@
 import { type FC, Fragment, useState } from 'react';
 import { useReactTable, getCoreRowModel, flexRender } from '@tanstack/react-table';
 import { useQuery } from '@apollo/client';
-import { DATA } from '../constants';
 
 import styles from './App.module.css';
 import { getColumns } from './App.utils';
 import { PostCard } from '../components';
 import { GET_USERS, GET_USERS_MOBILE } from '../services';
 import { typeOfDevice } from '../utils';
+import { type User } from '../types';
 
 export const App: FC = () => {
   const [expandedRows, setExpandedRows] = useState<Record<number, boolean>>({});
-  const { data, loading, error } = useQuery(
+  const { data, loading, error } = useQuery<{ users?: User[] }>(
     typeOfDevice === 'Desktop' ? GET_USERS : GET_USERS_MOBILE
   );
 
@@ -22,10 +22,10 @@ export const App: FC = () => {
     }));
   };
 
-  const columns = getColumns(toggleRow, expandedRows);
+  const columns = getColumns(toggleRow, expandedRows, typeOfDevice);
 
   const table = useReactTable({
-    data: DATA,
+    data: data?.users ?? [],
     columns,
     getCoreRowModel: getCoreRowModel(),
   });
