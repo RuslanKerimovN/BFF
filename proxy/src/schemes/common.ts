@@ -26,6 +26,6 @@ export const typeDefs: DocumentNode = gql`
 
   type Query {
     users: [User!]!
-    posts: [Post!]!
+    posts(id: ID!): [Post!]!
   }
 `;

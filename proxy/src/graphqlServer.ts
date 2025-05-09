@@ -1,21 +1,13 @@
 import express from 'express';
 import { ApolloServer } from 'apollo-server-express';
-import axios from 'axios';
-import { type User } from './types';
 import { typeDefs } from '../src/schemes';
 import 'dotenv/config';
+import { mergeResolvers } from '@graphql-tools/merge';
+import { userResolvers, postResolvers } from './resolvers';
 
 const PORT = process.env.PORT || 4000;
-const URL = process.env.URL || `http://localhost:3000/api`;
 
-const resolvers = {
-  Query: {
-    users: async (): Promise<User[]> => {
-      const response = await axios.get<{ users: User[] }>(`${URL}/users`);
-      return response.data.users;
-    },
-  },
-};
+export const resolvers = mergeResolvers([userResolvers, postResolvers]);
 
 const startServer = async (): Promise<void> => {
   const server = new ApolloServer({ typeDefs, resolvers });
