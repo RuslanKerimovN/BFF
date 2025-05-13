@@ -1,0 +1,17 @@
+.handler {
+  height: calc(100vh - var(--lg) * 2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.button {
+  padding: var(--sm);
+  background-color: var(--gray);
+}
+
+.button:hover {
+  padding: var(--sm);
+  background-color: rgba(var(--gray), 0.5);
+}
