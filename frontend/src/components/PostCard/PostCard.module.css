@@ -24,3 +24,25 @@
 .article {
   width: 80%;
 }
+
+.button {
+  padding: var(--ms);
+  margin-right: var(--md);
+  border-radius: var(--sm);
+  border: none;
+  color: white;
+  font-weight: 500;
+  width: 80px;
+}
+
+.edit {
+  background-color: rgb(38, 138, 55);
+}
+
+.delete {
+  background-color: rgb(233, 44, 60);
+}
+
+.button:hover {
+  opacity: 0.7;
+}

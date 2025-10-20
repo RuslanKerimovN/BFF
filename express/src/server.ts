@@ -1,4 +1,5 @@
 import express from 'express';
+import cors from 'cors';
 import { usersRouter, postsRouter } from './controller';
 import 'dotenv/config';
 import { PrismaClient } from './generated/prisma';
@@ -9,6 +10,15 @@ const prisma = new PrismaClient();
 const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
+app.use(cors());
+
+app.use(
+  cors({
+    origin: 'http://localhost:5173',
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+  })
+);
 
 app.use('/api/users', usersRouter);
 app.use('/api/posts', postsRouter);

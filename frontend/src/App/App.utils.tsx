@@ -21,7 +21,7 @@ export const getColumns = (
             {hasLength && (
               <>
                 <button onClick={() => callback(rowId)} className={styles.button}>
-                  {id ? '▼' : '▶'}
+                  {id[rowId] ? '▼' : '▶'}
                 </button>
               </>
             )}
