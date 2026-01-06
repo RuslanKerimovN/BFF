@@ -9,6 +9,14 @@ interface HandlerHocProps {
   children: ReactNode;
 }
 
+/**
+ * Данный компонент используется для работы со статусами запроса
+ * @param isError - ошибка
+ * @param isLoading - загрузка
+ * @param noData - отсутствие данных запроса
+ * @param refetch - коллбэк перезапроса
+ * @returns JSX
+ */
 export const HandlerHoc: FC<HandlerHocProps> = ({
   isError,
   isLoading,

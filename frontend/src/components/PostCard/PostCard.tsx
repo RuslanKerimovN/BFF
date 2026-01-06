@@ -10,6 +10,11 @@ interface PostCardProps {
 
 const FORMAT = 'dd.MM.yyyy';
 
+/**
+ * Данный компонент используется для отображения карточки поста
+ * @param post - пост
+ * @returns JSX
+ */
 export const PostCard: FC<PostCardProps> = ({ post }) => {
   const { title, content, authorId, createdAt, updateAt, published, id } = post;
   const [isPublished, setIsPublished] = useState(published);

@@ -6,6 +6,7 @@ interface UpdatePost {
   published?: boolean;
 }
 
+/** Данный хук используется для обновления поста и возвращает статусы для их обработки */
 export const useEditPost = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
